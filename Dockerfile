@@ -10,12 +10,12 @@ RUN apt-get install -y curl git
 RUN apt-get install -y -q php5-cli php5-curl
 
 # Behat alias in docker container
-ADD behat /home/behat/behat
-RUN chmod +x /home/behat/behat
+ADD behat /var/behat/behat
+RUN chmod +x /var/behat/behat
 
 # Install Behat
 RUN mkdir -p /var/behat/composer
-ADD composer.json /home/var/composer/composer.json
+ADD composer.json /var/behat/composer/composer.json
 RUN cd /var/behat/composer && curl http://getcomposer.org/installer | php
 RUN cd /var/behat/composer && php composer.phar install --prefer-source
 
